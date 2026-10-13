@@ -1,0 +1,61 @@
+NeuroTrac Live (Mac)
+
+Un suivi libre et gratuit pour la rééducation par électrostimulation et biofeedback EMG. Non officiel · lecture seule · interface et rapports en français 🇫🇷 et en anglais 🇬🇧 · English version
+
+Pourquoi ce projet
+
+Je suis parent d'un enfant en rééducation neuromotrice. Nous utilisons un NeuroTrac MyoPlus Pro 4 (EMG, ETS, stimulation), mais l'appareil ne garde pas de vrai historique exploitable : pas de courbes de progression, pas de rapport à montrer aux soignants, pas de suivi de ce qu'on observe d'une séance à l'autre. J'ai donc construit, avec l'aide d'une IA (Claude), une application Mac qui lit l'appareil en Bluetooth (lecture seule : elle n'envoie que la connexion, le PIN et un ping, jamais de réglage) et range tout dans un suivi : séances enregistrées automatiquement, seuils en mA, EMG, tests, observations, photos de placement des électrodes et rapports PDF.
+
+Ce projet est personnel et expérimental. Il n'est pas affilié au fabricant, ce n'est pas un dispositif médical, et rien de ce qu'il affiche n'est un diagnostic ni une consigne de réglage : tout est à interpréter avec l'équipe soignante. « NeuroTrac » est une marque de son propriétaire, citée ici uniquement pour indiquer l'appareil lu par l'outil.
+
+Collaborer, proposer des idées
+Parents, kinés, rééducateurs : quels indicateurs, tests ou formats de rapport seraient utiles en consultation ?
+Développeurs : SwiftUI, protocole Bluetooth série, traitement du signal EMG, tests, portabilité.
+Utilisateurs d'autres appareils NeuroTrac : enregistrements de trames pour vérifier le décodage.
+Graphistes et game designers : jeux de biofeedback pour enfants.
+Traducteurs : une autre langue ne demande qu'un dictionnaire (Sources/NeuroTracCore/Translations.swift).
+
+Ouvrez une issue ou une pull request. Ne publiez jamais de données de santé réelles (fichiers de séance, photos, PDF) : anonymisez ou inventez.
+
+Idées en cours
+
+taux de déclenchement ETS et conclusion automatique ; carte du corps ; jeux de biofeedback sur la télé ; vidéo synchronisée avec l'EMG ; lecture de l'historique stocké dans l'appareil ; app iPhone ou serveur Raspberry Pi.
+
+Version 0.6 — bilingue français / anglais
+
+L'interface, les messages et les rapports PDF existent en français et en anglais. Par défaut, la langue du système ; réglage dans la colonne de gauche (Langue : Auto / Français / English). Les données enregistrées restent identiques dans les deux langues ; le texte que vous tapez n'est jamais traduit.
+
+Prérequis
+Un Mac sous macOS 13 ou plus avec les outils en ligne de commande (xcode-select --install). Xcode n'est pas nécessaire.
+Un NeuroTrac MyoPlus Pro 4 appairé dans Réglages Système > Bluetooth (PIN 1234).
+Lancer
+git clone <ce dépôt> && cd neurotrac-live
+swift run
+
+Choisir « Bluetooth — Myo4Pro… », cliquer sur Connecter, attendre « Connecté : lecture en cours ».
+
+Installer comme une vraie application
+./build_app.sh           # fabrique « NeuroTrac Live.app »
+./update_app.sh          # recompile, garde l'ancienne version, installe et relance
+./update_app.sh --undo   # revient à la version précédente
+
+Les mises à jour ne touchent jamais vos données. Premier lancement : clic droit > Ouvrir ; autoriser le Bluetooth.
+
+Onglets
+
+Direct (EMG, stimulation, programme, noter un seuil) · Séances (historique automatique, photos, PDF) · Progression (courbes droite/gauche, tendances, rapport PDF de suivi) · Observations · Test EMG (protocole identique à chaque fois + évaluations du plancher pelvien) · Patient · Debug.
+
+Bon à savoir
+Choisir le muscle et le côté avant de lancer le programme sur l'appareil.
+Seuil : l'app ne devine pas quand le pied bouge ; cliquer « Noter le seuil » au moment de la réponse.
+EMG « max » : tiré par des parasites ; comparer plutôt la médiane ou le 95e centile.
+Salves de stimulation : nombre de reprises de courant (≥ 0,6 s de pause). En ETS : déclenchements obtenus.
+Sonde anale : muscle « Sphincter anal (sonde) », sans côté ; sonde et électrode de référence enregistrées par séance.
+Fichiers (Documents/NeuroTracLive)
+
+Suivi/ (JSON lisibles, copie .bak à chaque écriture), Rapports/ (PDF), CSV de séance et journaux.
+
+Tests
+swift test
+
+Les seuils et l'EMG sont des mesures de suivi à interpréter avec un kiné ou un médecin ; une tendance n'a de sens qu'à placement, programme et appareil identiques.
