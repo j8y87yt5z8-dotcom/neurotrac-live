@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key><string>NeuroTrac Live</string>
+    <key>CFBundleDisplayName</key><string>NeuroTrac Live</string>
+    <key>CFBundleIdentifier</key><string>fr.example.neurotraclive</string>
+    <key>CFBundleExecutable</key><string>NeuroTracLive</string>
+    <key>CFBundleIconFile</key><string>AppIcon</string>
+    <key>CFBundlePackageType</key><string>APPL</string>
+    <key>CFBundleShortVersionString</key><string>0.6</string>
+    <key>CFBundleVersion</key><string>5</string>
+    <key>LSMinimumSystemVersion</key><string>13.0</string>
+    <key>NSHighResolutionCapable</key><true/>
+    <key>NSPrincipalClass</key><string>NSApplication</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>NeuroTrac Live connects to your NeuroTrac over Bluetooth to read EMG and stimulation (read-only).</string>
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>NeuroTrac Live connects to your NeuroTrac over Bluetooth to read EMG and stimulation (read-only).</string>
+</dict>
+</plist>

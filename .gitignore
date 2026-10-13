@@ -1,0 +1,16 @@
+.build/
+.swiftpm/
+*.xcodeproj
+.DS_Store
+# données de suivi : ne jamais publier
+*.csv
+*.log
+*.pdf
+*.jpg
+*.jpeg
+*.heic
+*.json
+*.bak
+*.illisible-*
+NeuroTrac Live.app/
+Documents/
